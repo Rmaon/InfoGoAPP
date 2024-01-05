@@ -1,27 +1,30 @@
 package com.ramon.infogoreborn.Modelo
 
 class Usuario {
-    private var uid : String = ""
-    private var n_usuario : String = ""
-    private var email : String = ""
-    private var proveedor : String = ""
-    private var telefono : String = ""
-    private var imagen : String = ""
-    private var buscar : String = ""
-    private var nombres : String = ""
-    private var apellidos : String = ""
-    private var edad : String = ""
-    private var profesion : String = ""
-    private var domicilio : String = ""
-    private var estado : String = ""
+    // Propiedades privadas de la clase
+    private var uid: String = ""
+    private var n_usuario: String = ""
+    private var email: String = ""
+    private var proveedor: String = ""
+    private var telefono: String = ""
+    private var imagen: String = ""
+    private var buscar: String = ""
+    private var nombres: String = ""
+    private var apellidos: String = ""
+    private var edad: String = ""
+    private var profesion: String = ""
+    private var domicilio: String = ""
+    private var estado: String = ""
 
+    // Constructor vacío necesario para Firebase
     constructor()
 
+    // Constructor principal para inicializar la clase con valores
     constructor(
         uid: String,
         n_usuario: String,
         email: String,
-        proveedor : String,
+        proveedor: String,
         telefono: String,
         imagen: String,
         buscar: String,
@@ -30,7 +33,7 @@ class Usuario {
         edad: String,
         profesion: String,
         domicilio: String,
-        estado : String
+        estado: String
     ) {
         this.uid = uid
         this.n_usuario = n_usuario
@@ -47,109 +50,135 @@ class Usuario {
         this.estado = estado
     }
 
-    //getters y setters
-    fun getUid() : String?{
+    // Getters y setters para acceder y modificar las propiedades privadas
+
+    // Getter para obtener el UID del usuario
+    fun getUid(): String? {
         return uid
     }
 
-    fun setUid(uid : String){
+    // Setter para establecer el UID del usuario
+    fun setUid(uid: String) {
         this.uid = uid
     }
 
-    fun getN_Usuario() : String?{
+    // Getter para obtener el nombre de usuario
+    fun getN_Usuario(): String? {
         return n_usuario
     }
 
-    fun setN_Usuario(n_usuario : String){
+    // Setter para establecer el nombre de usuario
+    fun setN_Usuario(n_usuario: String) {
         this.n_usuario = n_usuario
     }
 
-    fun getEmail() : String?{
+    // Getter para obtener el correo electrónico del usuario
+    fun getEmail(): String? {
         return email
     }
 
-    fun setEmail(email : String){
+    // Setter para establecer el correo electrónico del usuario
+    fun setEmail(email: String) {
         this.email = email
     }
 
-    fun getProveedor () : String? {
+    // Getter para obtener el proveedor del usuario
+    fun getProveedor(): String? {
         return proveedor
     }
 
-    fun setProveedor (proveedor: String){
+    // Setter para establecer el proveedor del usuario
+    fun setProveedor(proveedor: String) {
         this.proveedor = proveedor
     }
 
-    fun getTelefono() : String?{
+    // Getter para obtener el número de teléfono del usuario
+    fun getTelefono(): String? {
         return telefono
     }
 
-    fun setTelefono(telefono : String){
+    // Setter para establecer el número de teléfono del usuario
+    fun setTelefono(telefono: String) {
         this.telefono = telefono
     }
 
-    fun getImagen() : String?{
+    // Getter para obtener la URL de la imagen de perfil del usuario
+    fun getImagen(): String? {
         return imagen
     }
 
-    fun setImagen(imagen : String){
+    // Setter para establecer la URL de la imagen de perfil del usuario
+    fun setImagen(imagen: String) {
         this.imagen = imagen
     }
 
-    fun getBuscar() : String?{
+    // Getter para obtener la cadena de búsqueda asociada al usuario
+    fun getBuscar(): String? {
         return buscar
     }
 
-    fun setBuscar(buscar : String){
+    // Setter para establecer la cadena de búsqueda asociada al usuario
+    fun setBuscar(buscar: String) {
         this.buscar = buscar
     }
 
-    fun getNombres() : String?{
+    // Getter para obtener los nombres del usuario
+    fun getNombres(): String? {
         return nombres
     }
 
-    fun setNombres(nombres : String){
+    // Setter para establecer los nombres del usuario
+    fun setNombres(nombres: String) {
         this.nombres = nombres
     }
 
-    fun getApellidos() : String?{
+    // Getter para obtener los apellidos del usuario
+    fun getApellidos(): String? {
         return apellidos
     }
 
-    fun setApellidos(apellidos : String){
+    // Setter para establecer los apellidos del usuario
+    fun setApellidos(apellidos: String) {
         this.apellidos = apellidos
     }
 
-    fun getEdad() : String?{
+    // Getter para obtener la edad del usuario
+    fun getEdad(): String? {
         return edad
     }
 
-    fun setEdad(edad : String){
+    // Setter para establecer la edad del usuario
+    fun setEdad(edad: String) {
         this.edad = edad
     }
 
-    fun getProfesion() : String?{
+    // Getter para obtener la profesión del usuario
+    fun getProfesion(): String? {
         return profesion
     }
 
-    fun setProfesion(profesion : String){
+    // Setter para establecer la profesión del usuario
+    fun setProfesion(profesion: String) {
         this.profesion = profesion
     }
 
-    fun getDomicilio() : String?{
+    // Getter para obtener el domicilio del usuario
+    fun getDomicilio(): String? {
         return domicilio
     }
 
-    fun setDomicilio(domicilio : String){
+    // Setter para establecer el domicilio del usuario
+    fun setDomicilio(domicilio: String) {
         this.domicilio = domicilio
     }
 
-    fun getEstado() : String?{
+    // Getter para obtener el estado del usuario
+    fun getEstado(): String? {
         return estado
     }
 
-    fun setEstado(estado : String){
+    // Setter para establecer el estado del usuario
+    fun setEstado(estado: String) {
         this.estado = estado
     }
-
 }

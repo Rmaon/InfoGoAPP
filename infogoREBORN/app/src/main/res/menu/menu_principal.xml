@@ -4,7 +4,10 @@
         android:id="@+id/menu_perfil"/>
     <item android:title="@string/menu_acerca_de"
         android:id="@+id/menu_acerca_de"/>
-
+    <item android:id="@+id/Mensaje_sms"
+        android:title="@string/contacta_via_sms"/>
+    <item android:id="@+id/Mensaje_mail"
+        android:title="@string/contacta_via_email"/>
     <item android:title="@string/cerrar_sesion"
         android:id="@+id/mSalir"/>
 </menu>

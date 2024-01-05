@@ -25,23 +25,33 @@ class Intro : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
 
     var firebaseUser : FirebaseUser?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inicializar el objeto de enlace para la vista mediante View Binding
         bindingIntro = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(bindingIntro.root)
 
+        // Inicializar Firebase Auth
+        auth = FirebaseAuth.getInstance()
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Espere por favor")
         progressDialog.setCanceledOnTouchOutside(false)
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+        // Configurar las opciones de inicio de sesión con Google
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
 
+        // Configurar el cliente de inicio de sesión con Google
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
+        // Configurar el clic en los botones
         bindingIntro.btnLogin.setOnClickListener {
             val intent = Intent(this@Intro, Login::class.java)
             startActivity(intent)
-
         }
 
         bindingIntro.btnRegister.setOnClickListener {
@@ -54,11 +64,13 @@ class Intro : AppCompatActivity() {
         }
     }
 
+    // Función para iniciar sesión con Google
     private fun SingInGOOGLE() {
         val googlesignIntent = googleSignInClient.signInIntent
         googleSignInARL.launch(googlesignIntent)
     }
 
+    // Resultado de la actividad para iniciar sesión con Google
     private val googleSignInARL = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) { resultado->
         if (resultado.resultCode == RESULT_OK){
@@ -69,13 +81,13 @@ class Intro : AppCompatActivity() {
                 AutenticarGoogleFirebase(account.idToken)
             }catch (e: Exception){
                 Toast.makeText(applicationContext, "Ha ocurrido una excepción debido a ${e.message}", Toast.LENGTH_SHORT).show()
-
             }
         }else{
             Toast.makeText(applicationContext, "Cancelado", Toast.LENGTH_SHORT).show()
         }
     }
 
+    // Autenticar en Firebase usando las credenciales de Google
     private fun AutenticarGoogleFirebase(idToken: String?) {
         val credencial = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credencial)
@@ -93,6 +105,8 @@ class Intro : AppCompatActivity() {
                 Toast.makeText(applicationContext, "${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
+    // Guardar la información del usuario en la base de datos
     private fun GuardarInfoBD() {
         progressDialog.setMessage("Se está registrando su información...")
         progressDialog.show()
@@ -134,8 +148,9 @@ class Intro : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(applicationContext, "${e.message}", Toast.LENGTH_SHORT).show()
             }
-
     }
+
+    // Comprobar si ya hay una sesión iniciada al iniciar la actividad
     private fun ComprobarSesion(){
         firebaseUser = FirebaseAuth.getInstance().currentUser
         if (firebaseUser!=null){

@@ -19,28 +19,37 @@ import com.ramon.infogoreborn.databinding.ActivityPerfilBinding
 class PerfilActivity : AppCompatActivity() {
 
     lateinit var perfilBinding: ActivityPerfilBinding
-    var user : FirebaseUser?=null
-    var reference : DatabaseReference?= null
+    var user: FirebaseUser? = null
+    var reference: DatabaseReference? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inicializar el objeto de enlace para la vista mediante View Binding
         perfilBinding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(perfilBinding.root)
 
+        // Obtener la instancia actual del usuario y la referencia a la base de datos
         user = FirebaseAuth.getInstance().currentUser
         reference = FirebaseDatabase.getInstance().reference.child("Usuarios").child(user!!.uid)
 
+        // Obtener y mostrar los datos del usuario
         ObtenerDatos()
 
-        perfilBinding.BtnGuardar.setOnClickListener{
+        // Configurar el botón de guardar para actualizar la información del perfil
+        perfilBinding.BtnGuardar.setOnClickListener {
             ActualizarInformacion()
         }
-        perfilBinding.EditarImagen.setOnClickListener{
+
+        // Configurar el botón para editar la imagen de perfil
+        perfilBinding.EditarImagen.setOnClickListener {
             val intent = Intent(applicationContext, EditarImagenPerfil::class.java)
             startActivity(intent)
         }
-
     }
-    private fun ActualizarInformacion(){
+
+    // Función para actualizar la información del perfil en la base de datos
+    private fun ActualizarInformacion() {
         val str_nombres = perfilBinding.PNombres.text.toString()
         val str_apellidos = perfilBinding.PApellidos.text.toString()
         val str_profesion = perfilBinding.PProfesion.text.toString()
@@ -56,26 +65,26 @@ class PerfilActivity : AppCompatActivity() {
         hashmap["edad"] = str_edad
         hashmap["telefono"] = str_telefono
 
-        reference!!.updateChildren(hashmap).addOnCompleteListener{task->
-            if (task.isSuccessful){
-                Toast.makeText(applicationContext,"Se han actualizado los datos", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(applicationContext,"No se han actualizado los datos", Toast.LENGTH_SHORT).show()
-
+        reference!!.updateChildren(hashmap).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(applicationContext, "Se han actualizado los datos", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(applicationContext, "No se han actualizado los datos", Toast.LENGTH_SHORT).show()
             }
-        }.addOnFailureListener{e->
-            Toast.makeText(applicationContext,"Ha ocurrido un error ${e.message}", Toast.LENGTH_SHORT).show()
-
+        }.addOnFailureListener { e ->
+            Toast.makeText(applicationContext, "Ha ocurrido un error ${e.message}", Toast.LENGTH_SHORT).show()
         }
-
-
     }
 
-    private fun ObtenerDatos(){
-        reference!!.addValueEventListener(object  : ValueEventListener{
+    // Función para obtener los datos del usuario desde la base de datos y mostrarlos en la interfaz de usuario
+    private fun ObtenerDatos() {
+        reference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
-                    val usuario : Usuario?= snapshot.getValue(Usuario::class.java)
+                if (snapshot.exists()) {
+                    // Obtener el objeto Usuario de la base de datos
+                    val usuario: Usuario? = snapshot.getValue(Usuario::class.java)
+
+                    // Obtener los atributos del usuario
                     val str_n_usuario = usuario!!.getN_Usuario()
                     val str_email = usuario.getEmail()
                     val str_proveedor = usuario.getProveedor()
@@ -86,6 +95,7 @@ class PerfilActivity : AppCompatActivity() {
                     val str_edad = usuario.getEdad()
                     val str_telefono = usuario.getTelefono()
 
+                    // Mostrar los datos del usuario en la interfaz de usuario
                     perfilBinding.PNUsuario.text = str_n_usuario
                     perfilBinding.PEmail.text = str_email
                     perfilBinding.PProveedor.text = str_proveedor
@@ -95,14 +105,15 @@ class PerfilActivity : AppCompatActivity() {
                     perfilBinding.PDomicilio.setText(str_domicilio)
                     perfilBinding.PEdad.setText(str_edad)
                     perfilBinding.PTelefono.setText(str_telefono)
+
+                    // Cargar la imagen del usuario usando Glide
                     Glide.with(applicationContext).load(usuario.getImagen()).placeholder(R.drawable.ic_item_usuario).into(perfilBinding.PImagen)
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                // Manejar el caso en que la lectura de datos sea cancelada (no implementado en este ejemplo)
             }
-
         })
     }
 }

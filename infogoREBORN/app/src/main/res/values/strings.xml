@@ -1,4 +1,5 @@
 <resources>
+    <string name="acerca_de_mensaje">APLICACION HECHA POR RAMON CAMINERO ARROYO DAM2</string>
     <string name="app_name">infogoRE</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="registrar">Registrar</string>
@@ -32,4 +33,6 @@
     <string name="Btn_abrir_camara">Cámara</string>
     <string name="TXT_ver_mensaje">Visto</string>
     <string name="default_web_client_id">1:161955188640:android:8824498d5c40aeceee5ec5</string>
+    <string name="contacta_via_sms">Contacta via SMS</string>
+    <string name="contacta_via_email">Contacta via email</string>
 </resources>
