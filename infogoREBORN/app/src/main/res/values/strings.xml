@@ -1,3 +1,35 @@
 <resources>
-    <string name="app_name">infogoREBORN</string>
+    <string name="app_name">infogoRE</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="registrar">Registrar</string>
+    <string name="iniciarsesion_con_google">"Iniciar Sesion con Google "</string>
+    <string name="UserName">Nombre de usuario</string>
+    <string name="N_usuario_chat">Nombre de usuario</string>
+    <string name="Et_mensaje">Escriba un mensaje</string>
+    <string name="Item_nombre_usuario">Nombre de usuario</string>
+    <string name="Item_email_usuario">Email de usuario</string>
+    <string name="Txt_ultimo_mensaje"></string>
+    <string name="BtnElegirImagenDe">Elegir imagen de perfil</string>
+    <string name="BtnActualizarImagen">Actualizar imagen</string>
+    <string name="P_n_usuario">Nombre de usuario</string>
+    <string name="P_proveedor_txt">Proveedor: </string>
+    <string name="P_proveedor"> -- </string>
+    <string name="P_email">Email</string>
+    <string name="P_nombres">Nombres</string>
+    <string name="P_apellidos">Apellidos</string>
+    <string name="P_profesion">Profesión</string>
+    <string name="P_domicilio">Domicilio</string>
+    <string name="P_edad">Edad</string>
+    <string name="P_telefono">Telefono</string>
+    <string name="Btn_Guardar">Guardar</string>
+    <string name="Btn_verificar">No verificado</string>
+    <string name="Et_buscar_usuario">Buscar usuario</string>
+    <string name="menu_perfil">Perfil Usuario</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="menu_acerca_de">Acerca de</string>
+    <string name="Txt_seleccionar_imagen">Seleccionar imagen de Perfil: </string>
+    <string name="Btn_abrir_galeria">Galería</string>
+    <string name="Btn_abrir_camara">Cámara</string>
+    <string name="TXT_ver_mensaje">Visto</string>
+    <string name="default_web_client_id">1:161955188640:android:8824498d5c40aeceee5ec5</string>
 </resources>
